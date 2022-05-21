@@ -18,6 +18,8 @@
 		4133A7A32836B98D006E390F /* AddNewDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4133A7A12836B98D006E390F /* AddNewDayViewController.xib */; };
 		4133A7AC2836C2A4006E390F /* DairyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4133A7AA2836C2A4006E390F /* DairyTableViewCell.swift */; };
 		4133A7AD2836C2A4006E390F /* DairyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4133A7AB2836C2A4006E390F /* DairyTableViewCell.xib */; };
+		41DF41F62839270500BF19DC /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 41DF41F52839270500BF19DC /* FSCalendar */; };
+		41DF41F82839274300BF19DC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF41F72839274300BF19DC /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,7 @@
 		4133A7A12836B98D006E390F /* AddNewDayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewDayViewController.xib; sourceTree = "<group>"; };
 		4133A7AA2836C2A4006E390F /* DairyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DairyTableViewCell.swift; sourceTree = "<group>"; };
 		4133A7AB2836C2A4006E390F /* DairyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DairyTableViewCell.xib; sourceTree = "<group>"; };
+		41DF41F72839274300BF19DC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41DF41F62839270500BF19DC /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,8 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				4133A78A2836B570006E390F /* ViewController.swift */,
-				4133A7A72836C236006E390F /* Cell */,
+				41DF41F928392C9600BF19DC /* Calendar */,
 				4133A79F2836B951006E390F /* Add New Day */,
+				4133A7A72836C236006E390F /* Cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +119,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		41DF41F928392C9600BF19DC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				41DF41F72839274300BF19DC /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -130,6 +143,9 @@
 			dependencies = (
 			);
 			name = DiaryApp;
+			packageProductDependencies = (
+				41DF41F52839270500BF19DC /* FSCalendar */,
+			);
 			productName = DiaryApp;
 			productReference = 4133A7832836B570006E390F /* DiaryApp.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +174,9 @@
 				Base,
 			);
 			mainGroup = 4133A77A2836B570006E390F;
+			packageReferences = (
+				41DF41F42839270500BF19DC /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = 4133A7842836B570006E390F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -192,6 +211,7 @@
 				4133A7872836B570006E390F /* AppDelegate.swift in Sources */,
 				4133A7AC2836C2A4006E390F /* DairyTableViewCell.swift in Sources */,
 				4133A7892836B570006E390F /* SceneDelegate.swift in Sources */,
+				41DF41F82839274300BF19DC /* CalendarViewController.swift in Sources */,
 				4133A7912836B570006E390F /* DiaryApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +430,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		41DF41F42839270500BF19DC /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		41DF41F52839270500BF19DC /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41DF41F42839270500BF19DC /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4133A78F2836B570006E390F /* DiaryApp.xcdatamodeld */ = {

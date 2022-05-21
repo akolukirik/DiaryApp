@@ -12,11 +12,18 @@ class AddNewDayViewController: UIViewController {
 
     @IBOutlet var titleLabel: UITextField!
     @IBOutlet var symbolLabel: UITextField!
-    @IBOutlet var noteLabel: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var noteLabel: UITextView!
 
     var pickerView = UIPickerView()
-    let data = ["💸","🧾","🎯"," 🍔","🏡","👾","👔","🚘"]
+    var data = [String]()
+
+    func emojiData() {
+        for i in 0x1F601...0x1F64F {
+            guard let scalar = UnicodeScalar(i) else { continue }
+            data.append("\(scalar)")
+        }
+    }
 
     var chosenTitle = ""
     var chosenTitleID: UUID?
@@ -51,6 +58,8 @@ class AddNewDayViewController: UIViewController {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tap)
+
+        emojiData()
     }
 
     @objc func hideKeyboard() {
