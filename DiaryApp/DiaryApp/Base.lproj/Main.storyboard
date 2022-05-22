@@ -17,21 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11K-6E-VpC">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11K-6E-VpC">
                                 <rect key="frame" x="20" y="105" width="374" height="451"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLn-dz-IdE" customClass="FSCalendar">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLn-dz-IdE" customClass="FSCalendar">
                                         <rect key="frame" x="0.0" y="8" width="374" height="435"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eLn-dz-IdE" secondAttribute="trailing" id="8Jh-e7-9ZO"/>
+                                    <constraint firstItem="eLn-dz-IdE" firstAttribute="top" secondItem="11K-6E-VpC" secondAttribute="topMargin" id="L6V-UQ-cGc"/>
+                                    <constraint firstItem="eLn-dz-IdE" firstAttribute="bottom" secondItem="11K-6E-VpC" secondAttribute="bottomMargin" id="Lga-uq-uhr"/>
+                                    <constraint firstItem="eLn-dz-IdE" firstAttribute="leading" secondItem="11K-6E-VpC" secondAttribute="leading" id="iCL-Ch-35K"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nqF-MK-4IW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="11K-6E-VpC" firstAttribute="trailing" secondItem="ByF-96-0sa" secondAttribute="trailingMargin" id="FWj-z8-JgF"/>
+                            <constraint firstItem="11K-6E-VpC" firstAttribute="top" secondItem="nqF-MK-4IW" secondAttribute="top" constant="61" id="NgP-sq-DKu"/>
+                            <constraint firstItem="nqF-MK-4IW" firstAttribute="bottom" secondItem="11K-6E-VpC" secondAttribute="bottom" constant="257" id="Y30-08-LTt"/>
+                            <constraint firstItem="11K-6E-VpC" firstAttribute="leading" secondItem="ByF-96-0sa" secondAttribute="leadingMargin" id="gLo-ac-VSS"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" id="9dl-BP-5iu">
                         <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>

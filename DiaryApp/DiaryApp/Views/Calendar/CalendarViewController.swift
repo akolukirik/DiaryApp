@@ -24,7 +24,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         calendar.dataSource = self
         calendar.delegate = self
         getDateData()

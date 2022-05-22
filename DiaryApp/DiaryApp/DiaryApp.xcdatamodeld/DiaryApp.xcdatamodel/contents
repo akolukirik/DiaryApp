@@ -3,11 +3,12 @@
     <entity name="DiaryDB" representedClassName="DiaryDB" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="note" optional="YES" attributeType="String"/>
         <attribute name="symbol" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="DiaryDB" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="DiaryDB" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

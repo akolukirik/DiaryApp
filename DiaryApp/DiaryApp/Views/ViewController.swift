@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var titleArray = [String]()
     var noteArray = [String]()
     var dateArray = [Date]()
+    var imageArray = [Data]()
 
     @IBOutlet var tableView: UITableView!
 
@@ -51,6 +52,7 @@ class ViewController: UIViewController {
         titleArray.removeAll(keepingCapacity: false)
         noteArray.removeAll(keepingCapacity: false)
         dateArray.removeAll(keepingCapacity: false)
+        imageArray.removeAll(keepingCapacity: false)
 
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let context = appDelegate?.persistentContainer.viewContext
@@ -78,6 +80,9 @@ class ViewController: UIViewController {
                     if let date = result.value(forKey: "date") as? Date {
                         self.dateArray.append(date)
                     }
+                    if let imageData = result.value(forKey: "image") as? Data {
+                        self.imageArray.append(imageData)
+                    }
                     tableView.reloadData()
                 }
             }
@@ -96,16 +101,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 110
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DairyTableViewCell", for: indexPath) as? DairyTableViewCell
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
+        let images = imageArray[indexPath .section]
         cell?.titleLabel.text = titleArray[indexPath.section]
         cell?.sybolLabel.text = symbolArray[indexPath.section]
         cell?.dateLabel.text = formatter.string(from: dateArray[indexPath.section])
+        cell?.diaryImageView.image = UIImage(data: images)
         return cell!
     }
 
@@ -138,6 +145,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                                 dateArray.remove(at: indexPath.section)
                                 noteArray.remove(at: indexPath.section)
                                 symbolArray.remove(at: indexPath.section)
+                                imageArray.remove(at: indexPath.section)
                                 self.tableView.reloadData()
                                 do {
                                     try context?.save()

@@ -8,12 +8,13 @@
 import UIKit
 import CoreData
 
-class AddNewDayViewController: UIViewController {
+class AddNewDayViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var titleLabel: UITextField!
     @IBOutlet var symbolLabel: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var noteLabel: UITextView!
+    @IBOutlet var diaryImageView: UIImageView!
 
     var pickerView = UIPickerView()
     var data = [String]()
@@ -54,16 +55,52 @@ class AddNewDayViewController: UIViewController {
             if let date = selectedObject.value(forKey: "date") as? Date {
                 datePicker.date = date
             }
+            if let imagedata = selectedObject.value(forKey: "image") as? Data {
+                let image = UIImage(data: imagedata)
+                diaryImageView.image = image
+            }
         }
+
+        diaryImageView.isUserInteractionEnabled = true
+        let imageTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectImage))
+        diaryImageView.addGestureRecognizer(imageTapRecognizer)
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tap)
+
+        diaryImageView.layer.borderWidth = 1
+        diaryImageView.layer.cornerRadius = 5.0
+
+        titleLabel.layer.borderWidth = 1
+        titleLabel.layer.cornerRadius = 5.0
+
+        symbolLabel.layer.borderWidth = 1
+        symbolLabel.layer.cornerRadius = 5.0
+
+        noteLabel.layer.borderWidth = 1
+        noteLabel.layer.cornerRadius = 5.0
 
         emojiData()
     }
 
     @objc func hideKeyboard() {
         view.endEditing(true)
+    }
+
+    @objc func selectImage() {
+
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        diaryImageView.image = info[.originalImage] as? UIImage
+        self.dismiss(animated: true)
+
     }
 
     @IBAction func cancelButtonclicked(_ sender: Any) {
@@ -103,6 +140,9 @@ class AddNewDayViewController: UIViewController {
             paymentObject.setValue(symbolLabel.text, forKey: "symbol")
             paymentObject.setValue(datePicker.date, forKey: "date")
             paymentObject.setValue(noteLabel.text, forKey: "note")
+            let data = diaryImageView.image!.jpegData(compressionQuality: 0.5)
+            paymentObject.setValue(data, forKey: "image")
+
             do {
                 try context.save()
             } catch  {
